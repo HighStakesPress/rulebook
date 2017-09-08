@@ -1,0 +1,182 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Legrand Orange Book
+% LaTeX Template
+% Version 2.1.1 (14/2/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Compiling this template:
+% This template uses biber for its bibliography and makeindex for its index.
+% When you first open the template, compile it from the command line with the 
+% commands below to make sure your LaTeX distribution is configured correctly:
+%
+% 1) pdflatex main
+% 2) makeindex main.idx -s StyleInd.ist
+% 3) biber main
+% 4) pdflatex main x 2
+%
+% After this, when you wish to update the bibliography/index use the appropriate
+% command above and make sure to compile with pdflatex several times 
+% afterwards to propagate your changes to the document.
+%
+% This template also uses a number of packages which may need to be
+% updated to the newest versions for the template to compile. It is strongly
+% recommended you update your LaTeX distribution if you have any
+% compilation errors.
+%
+% Important note:
+% Chapter heading images should have a 2:1 width:height ratio,
+% e.g. 920px width and 460px height.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,fleqn]{book} % Default font size and left-justified equations
+
+%----------------------------------------------------------------------------------------
+
+\input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template\
+\usepackage{lettrine}
+\usepackage[T1]{fontenc}
+\usepackage{tcolorbox}
+\usepackage{csquotes}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{array, tabularx}
+\usepackage{pdfpages}
+\usepackage{subfiles}
+
+
+\usepackage[style=alphabetic,citestyle=numeric,sorting=nyt,sortcites=true,autopunct=true,babel=hyphen,hyperref=true,abbreviate=false,backref=true,backend=biber]{biblatex}
+\addbibresource{bibliography.bib} % BibTeX bibliography file
+\defbibheading{bibempty}{}
+\nocite{*}
+
+
+\newenvironment{dedication}
+{
+   \cleardoublepage
+   \thispagestyle{empty}
+   \vspace*{\stretch{1}}
+   \hfill\begin{minipage}[t]{0.66\textwidth}
+   \raggedright
+}
+{
+   \end{minipage}
+   \vspace*{\stretch{3}}
+   \clearpage
+}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begingroup
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate [below=12cm] (midpoint) at (current page.north);
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{Coverpage}}; % Background image
+\draw[anchor=north] (midpoint) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering American Sunset\\[15pt] % Book title
+{\large A Role Playing Game }\\ % Subtitle
+{\Large Wolky Samboy-Hillyer, Zeb Howell, Jordan Voltz, and Edgar Elliott}}}; % Author name
+\end{tikzpicture}};
+\end{tikzpicture}
+\vfill
+\endgroup
+
+%----------------------------------------------------------------------------------------
+%	COPYRIGHT PAGE
+%----------------------------------------------------------------------------------------
+
+\newpage
+~\vfill
+\thispagestyle{empty}
+
+\noindent Copyright \copyright\ 2016 Wolky Samboy-Hillyer, Zeb Howell, Jordan Voltz, and Edgar Elliott\\ % Copyright notice
+ 
+\noindent Art Copyright \copyright\ 2016 Calida Howell\\
+
+\noindent \LaTeX \  book Template by Mathias Legrand, with modifications by Vel (vel@latextemplates.com) and Zeb Howell. \\
+
+\noindent This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-nc/4.0/}.\\ % License information
+
+\noindent \textit{First printing, May 2016} % Printing/edition date
+
+%----------------------------------------------------------------------------------------
+%	DEDICATIONS
+%----------------------------------------------------------------------------------------
+\newpage
+
+
+\begin{dedication}
+\small Special thanks to Professor Amy Fisher, our patron, editor, research advisor, and perpetual source of motivation for this entire project. American Sunset couldn't have happened without her, and she's helped us in too many ways to count. Amy took a risk believing in us, and we couldn't be more thankful for it.
+
+\hfill
+
+\small Edgar would like to thank his friends, especially the RPG group from freshman year, without which he definitely never would have found himself working on this project.
+
+\hfill
+
+\small Zeb would like to thank the friends he first played DnD with all those years ago, both his sisters, and anyone he's coerced into playing an RPG with him.
+
+\hfill
+
+\small Wolky would like to thank the University of Puget Sound Science, Technology, and Society department, and especially Kristin Johnson for helping us get started on turning our idea into an a
+accredited class, his friends for all the ideas he let them bounce off of him, the community of interested people at the University of Puget Sound, and his mother.
+
+\hfill
+
+\small Jordan would like to personally thank his professors (especially Julie Christoph and Mike Benveniste), his family, his friends, and Natalie de Gyarfas.
+
+\hfill
+
+\small We'd also like to extend thanks to all our playtesters, who took time out of their busy schedules every Tuesday night to test the game with us, even when we weren't sure if it was fun yet.
+
+\end{dedication}
+
+\subfile{sections/intro}
+
+\subfile{sections/table}
+
+\subfile{sections/shorthand}
+
+\subfile{sections/ch1}
+
+\subfile{sections/ch2}
+
+\subfile{sections/ch3}
+
+\subfile{sections/ch4}
+
+\subfile{sections/ch5}
+
+\subfile{sections/ch6}
+
+\subfile{sections/ch7}
+
+\subfile{sections/ch8}
+
+\subfile{sections/app1}
+
+\subfile{sections/app2}
+
+\subfile{sections/bib}
+
+\subfile{sections/index}
+
+\end{document}
